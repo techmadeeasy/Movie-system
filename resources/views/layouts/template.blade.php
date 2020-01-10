@@ -75,13 +75,22 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="/">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item">
+
+                    @guest
                     <a class="nav-link" href="{{ route("login") }}">Login</a>
-                </li>
+                     @else
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route("home") }}">My Account</a>
+                    </li>
+                        <form action="{{ route("logout") }}" method="post">
+                            @csrf
+                            <button class="btn btn-alt text-white">Logout</button>
+                        </form>
+                        @endif
             </ul>
         </div>
     </div>

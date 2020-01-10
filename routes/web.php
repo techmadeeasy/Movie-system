@@ -14,7 +14,7 @@
 Route::get('/', "FilmController@nowShowing")->name("welcome");
 Route::get('/view-showing/{id}', "FilmController@viewNowShowing")->name("single.view");
 Route::get("cinema/theatre/{id}", "FilmController@showTheatres");
-
+Route::get("cinema/theatre/{id}", "FilmController@showTheatres");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -35,10 +35,10 @@
                 <div class="card my-4">
                     <h5 class="card-header">Book ticket</h5>
                     <div class="card-body">
-                        <form id="form" action="post" action="">
+                        <form id="form" method="post" enctype="multipart/form-data" action="{{ route("book") }}">
                             <div class="form-group">
                                 <label for="the"> Cinema</label>
-                                <select class="form-control" name="theatre" onchange="printsomething()">
+                                <select class="form-control" name="cinema">
                                     @foreach($cinemas as $cinema)
                                         <option value="{{ $cinema->id }}">{{ $cinema->suburb }}</option>
                                     @endforeach
@@ -46,11 +46,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Film</label>
-                                <input type="text" class="form-control" value="{{ $film->title }}" disabled>
+                                <input type="text" class="form-control" value="{{ $film->title }}"  disabled>
+                                <input type="hidden" value="{{ $film->id }}" name="film">
                             </div>
                             <div class="form-group">
                                 <label for="">Showing times</label>
-                                <select class="form-control" name="theatre">
+                                <select class="form-control" name="show_time">
                                     @foreach($showing_times as $times)
                                     <option value="{{  $times->id }}">{{  $times->showtime }}</option>
                                      @endforeach
@@ -58,12 +59,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Tickets</label>
-                                <select class="form-control" name="theatre">
+                                <select class="form-control" name="tickets">
                                     <template v-for="index in 30">
                                         <option :value="index">@{{  index }}</option>
                                     </template>
                                 </select>
                             </div>
+                            @csrf
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

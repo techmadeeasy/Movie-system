@@ -16,6 +16,7 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger("film_id");
+            $table->bigInteger("booking_id");
             $table->string("digital_signature")->nullable();
             $table->bigInteger("showtime_id");
             $table->timestamps();

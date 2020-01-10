@@ -9,6 +9,7 @@ use App\Http\Requests\BookTicketsRequest;
 use App\Location;
 use App\ShowTime;
 use App\Theatre;
+use App\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,6 +41,13 @@ class FilmController extends Controller
             "showtime_id"=>$input["show_time"],
             "reference_number" => $hash,
         ]);
+        for($x=0;$x<$input["tickets"];$x++){
+            $ticket = Ticket::create([
+                "film_id"=>$input["film"],
+                "booking_id"=>$save->id,
+                "showtime_id"=>$input["show_time"],
+            ]);
+        }
         return back();
     }
 

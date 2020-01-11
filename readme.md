@@ -6,3 +6,10 @@ Instructions to run this Projects
 4. Edit the .env file for database credentials 
 5. Run php artisan migrate:refresh --seed 
 6. Enjoy 
+
+
+Dependency 
+
+- Laravel  5.8
+- PHP 7.2 +
+- Composer 

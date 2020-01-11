@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('user_area', compact("user"));
+        $time = new Carbon();
+        return view('user_area', compact("user", "time"));
     }
 }

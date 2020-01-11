@@ -32,10 +32,16 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="card-title">{{ $booking->film->title }}</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                    <p class="card-text">Movie time : {{$time->parse($booking->showTime->showtime)->format("H:i:s A") }}</p>
+                    <p class="card-text">Location : {{ $booking->location->suburb}}</p>
+                    <p class="card-text">Theatre : {{ $booking->theatre->name }}</p>
+                    <p class="card-text">Ticket(s) : {{ $booking->tickets->count()}}</p>
+                    <p class="card-text">Reference Number : {{ $booking->reference_number}}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary btn-sm">More Info</a>
+                    @if($time->parse($booking->showTime->showtime)->diffInMinutes($time->now()->addHours(2)) > 60)
+                    <a href="#" class="btn btn-primary btn-sm">Cancel</a>
+                     @endif
                 </div>
             </div>
         </div>

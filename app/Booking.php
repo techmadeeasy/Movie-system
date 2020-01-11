@@ -17,6 +17,14 @@ class Booking extends Model
     }
 
     public function location(){
-        return $this->hasOne(Location::class);
+        return $this->belongsTo(Location::class);
+    }
+
+    public function showTime(){
+        return $this->belongsTo(ShowTime::class, "showtime_id");
+    }
+
+    public function theatre(){
+        return $this->belongsTo(Theatre::class, "theatre_id");
     }
 }

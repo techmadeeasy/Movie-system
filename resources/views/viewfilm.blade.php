@@ -15,9 +15,6 @@
 
                 <hr>
 
-                <!-- Date/Time -->
-                <p>showing at : {{ $film->showing_time }}</p>
-
                 <hr>
 
                 <!-- Preview Image -->
@@ -43,19 +40,34 @@
                                         <option value="{{ $cinema->id }}">{{ $cinema->suburb }}</option>
                                     @endforeach
                                 </select>
+                                @error("cinema")
+                                <div>
+                                    <span class="alert alert-danger"> This field is required</span>
+                                </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Film</label>
                                 <input type="text" class="form-control" value="{{ $film->title }}"  disabled>
                                 <input type="hidden" value="{{ $film->id }}" name="film">
+                                @error("film")
+                                <div>
+                                    <span class="alert alert-danger"> This field is required</span>
+                                </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Showing times</label>
                                 <select class="form-control" name="show_time">
                                     @foreach($showing_times as $times)
-                                    <option value="{{  $times->id }}">{{  $times->showtime }}</option>
+                                    <option value="{{  $times->id }}">{{ $time->parse($times->showtime)->format("H:i A")    }}</option>
                                      @endforeach
                                 </select>
+                                @error("show_time")
+                                <div>
+                                    <span class="alert alert-danger"> This field is required</span>
+                                </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="">Tickets</label>
@@ -65,8 +77,18 @@
                                     </template>
                                 </select>
                             </div>
+                            @error("show_time")
+                            <div>
+                                <span class="alert alert-danger"> This field is required</span>
+                            </div>
+                            @enderror
                             @csrf
                             <button type="submit" class="btn btn-primary">Submit</button>
+                          @if(session()->exists("error"))
+                            <div>
+                                <span class="alert alert-danger"> Theatre is full for that time</span>
+                            </div>
+                              @endif
                         </form>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->bigInteger("user_id");
             $table->bigInteger("film_id");
             $table->bigInteger("location_id");
+            $table->bigInteger("theatre_id");
             $table->bigInteger("showtime_id");
             $table->string("reference_number");
             $table->timestamps();

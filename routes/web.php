@@ -13,7 +13,8 @@
 
 Route::get('/', "FilmController@nowShowing")->name("welcome");
 Route::get('/view-showing/{id}', "FilmController@viewNowShowing")->name("single.view");
-Route::post("book-tickets", "FilmController@bookTickets")->name("book");
+Route::post("book-tickets", "BookingController@bookTickets")->name("book");
+Route::get("booking-confirmation/{id}", "BookingController@bookingConfirmation")->name("confirmation");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

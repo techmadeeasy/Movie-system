@@ -15,7 +15,7 @@
             </ul>
             <div class="mb-lg-5">
                 @if($time->parse($booking->showTime->showtime)->diffInMinutes($time->now()->addHours(2)) > 60)
-                <a href="#" class="btn btn-primary">Cancel Booking</a>
+                <a href="{{ route("cancel.booking", $booking->id) }}" class="btn btn-primary">Cancel Booking</a>
                     @endif
             </div>
 
@@ -23,6 +23,4 @@
     </div>
 </div>
 
-
-</html>
 @endsection

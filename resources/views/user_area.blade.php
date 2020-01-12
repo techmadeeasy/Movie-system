@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-footer">
                     @if($time->parse($booking->showTime->showtime)->diffInMinutes($time->now()->addHours(2)) > 60)
-                    <a href="#" class="btn btn-primary btn-sm">Cancel</a>
+                    <a href="{{ route("cancel.booking", $booking->id) }}" class="btn btn-primary btn-sm">Cancel</a>
                      @endif
                 </div>
             </div>

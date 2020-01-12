@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+
 use App\Http\Requests\BookTicketsRequest;
 use App\Location;
 use App\Theatre;
@@ -58,5 +59,7 @@ class BookingController extends Controller
     public function cancelBooking($id){
         $booking = Booking::findorFail($id)->delete();
         $booking = Ticket::whereId($id)->delete();
+        session()->flash("cancelled", "");
+        return view("cancel-booking");
     }
 }

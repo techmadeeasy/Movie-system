@@ -15,6 +15,7 @@ Route::get('/', "FilmController@nowShowing")->name("welcome");
 Route::get('/view-showing/{id}', "FilmController@viewNowShowing")->name("single.view");
 Route::post("book-tickets", "BookingController@bookTickets")->name("book");
 Route::get("booking-confirmation/{id}", "BookingController@bookingConfirmation")->name("confirmation");
+Route::get("cancel-booking/{id}", "BookingController@cancelBooking")->name("cancel.booking");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

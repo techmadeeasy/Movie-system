@@ -58,7 +58,7 @@ class BookingController extends Controller
 
     public function cancelBooking($id){
       $booking = Booking::findorFail($id)->delete();
-       return $booking = Ticket::whereBookingId($id)->delete();
+        $ticket = Ticket::whereBookingId($id)->delete();
         session()->flash("cancelled", "");
         return view("cancel-booking");
     }
